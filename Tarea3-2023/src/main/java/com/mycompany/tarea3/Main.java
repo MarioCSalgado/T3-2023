@@ -1,16 +1,18 @@
 
 package com.mycompany.tarea3;
 
+/**
+*Clase main, se usara para instanciar las otras clases respectivas y darle funcionalidad al codigo en conjunto
+*/
 public class Main {
-        public static void main(String[] args) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+    public static void main(String[] args) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         Expendedor exp = new Expendedor(4);
         Moneda m = null;
         Comprador c = null;
-        System.out.println("Precios productos: ");
-        System.out.println("Cocacola: " + Expendedor.precioCoca);
-        System.out.println("Sprite: " + Expendedor.precioSprite);
-        System.out.println("Super8: " + Expendedor.precioSuper8);
-        System.out.println("Trencito: " + Expendedor.precioTrencito + "\n");
+        
+        for(Precios p:Precios.values()){
+            System.out.println(p);           
+        }
 
 //-----Producto que NO vende, lanza una exception y con try-catch lanzamos un msg en este, caso y devolvemos la moenda*/
         try {
@@ -49,7 +51,7 @@ public class Main {
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
-        
+
 //-----con MENOS dinero que el precio, lanza una exception y usamos try-catch para devolver un msg y la moneda-----
         try {
             m = new Moneda500();
@@ -100,7 +102,7 @@ public class Main {
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
         }
-        
+
 //-----Con Mas dinero para comprar Trencito y si esta vacio retorna una exception, usamos try-catch para imprimir un msg-----
         try {
             m = new Moneda1500();
@@ -121,6 +123,6 @@ public class Main {
 
         } catch (NoHayProductoException e) {
             System.out.println(e.getMessage() + ", se le devolvera su moneda: " + exp.getVuelto().getValor());
-        }    
+        }
     }
 }
