@@ -23,7 +23,7 @@ abstract class Moneda implements Comparable<Moneda>{
     */
     @Override
     public int compareTo(Moneda monedaprueba){
-        return (this.getSerie().getValor()-monedaprueba.getSerie().getValor());
+        return (this.getValor()-monedaprueba.getValor());
     }
     /**
     *Metodo para darle estructura a los override que retornaran el valor de las monedas respectivas
