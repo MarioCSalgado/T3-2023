@@ -1,6 +1,5 @@
 
 package com.mycompany.tarea3;
-
 /**
 *Clase Expendedor, simula un expendedor creando sus depositos respectivos para cada bebida y producto en general, además de a sus monedas
 *@field coca Es el deposito de las cocacolas
@@ -26,10 +25,12 @@ class Expendedor{
     public static final int SPRITE=2;
     public static final int SUPER8=3; 
     public static final int TRENCITO=4;
-    public static final int precioCoca=900;
-    public static final int precioSprite=900;
-    public static final int precioSuper8=300;
-    public static final int precioTrencito=1200;
+    
+    int precioCoca=Precios.COCACOLA.getPrecio();
+    int precioSprite=Precios.SPRITE.getPrecio();
+    int precioSuper8=Precios.SUPER8.getPrecio();
+    int precioTrencito=Precios.TRENCITO.getPrecio();
+    
     public int vuelto=0;
     /**
     *Metodo constructor de Expendedor, instancia los depositos  y además agrega sus productos dado un numero entragado como parametro, tambien guarda los precios
@@ -72,12 +73,12 @@ class Expendedor{
                     monVu.addDeposito(m);
                     throw new NoHayProductoException("No quedan CocaCola's, los depositos estan vacios");
 
-                } else if (precioCoca > m.getSerie().getValor()) {
+                } else if (precioCoca > m.getValor()) {
                     monVu.addDeposito(m);
                     throw new PagoInsuficienteException("Pago Insuficiente");
 
                 } else {
-                    vuelto = m.getSerie().getValor() - precioCoca;
+                    vuelto = m.getValor() - precioCoca;
                     int numLoops = vuelto / 100;
                     for (int i = 0; i < numLoops; i++) {
                         monVu.addDeposito(new Moneda100());
@@ -90,12 +91,12 @@ class Expendedor{
                     monVu.addDeposito(m);
                     throw new NoHayProductoException("No quedan Sprite's, los depositos estan vacios");
 
-                } else if (precioSprite > m.getSerie().getValor()) {
+                } else if (precioSprite > m.getValor()) {
                     monVu.addDeposito(m);
                     throw new PagoInsuficienteException("Pago Insuficiente");
 
                 } else {
-                    vuelto = m.getSerie().getValor() - precioSprite;
+                    vuelto = m.getValor() - precioSprite;
                     int numLoops = vuelto / 100;
                     for (int i = 0; i < numLoops; i++) {
                         monVu.addDeposito(new Moneda100());
@@ -108,12 +109,12 @@ class Expendedor{
                     monVu.addDeposito(m);
                     throw new NoHayProductoException("No quedan Super8's, los depositos estan vacios");
 
-                } else if (precioSuper8 > m.getSerie().getValor()) {
+                } else if (precioSuper8 > m.getValor()) {
                     monVu.addDeposito(m);
                     throw new PagoInsuficienteException("Pago Insuficiente");
 
                 } else {
-                    vuelto = m.getSerie().getValor() - precioSuper8;
+                    vuelto = m.getValor() - precioSuper8;
                     int numLoops = vuelto / 100;
                     for (int i = 0; i < numLoops; i++) {
                         monVu.addDeposito(new Moneda100());
@@ -127,12 +128,12 @@ class Expendedor{
                     monVu.addDeposito(m);
                     throw new NoHayProductoException("No quedan Trencito's, los depositos estan vacios");
 
-                } else if (precioTrencito > m.getSerie().getValor()) {
+                } else if (precioTrencito > m.getValor()) {
                     monVu.addDeposito(m);
                     throw new PagoInsuficienteException("Pago Insuficiente");
 
                 } else {
-                    vuelto = m.getSerie().getValor() - precioTrencito;
+                    vuelto = m.getValor() - precioTrencito;
                     int numLoops = vuelto / 100;
                     for (int i = 0; i < numLoops; i++) {
                         monVu.addDeposito(new Moneda100());
@@ -153,5 +154,6 @@ class Expendedor{
         else return mon1;
     }
 } 
+
 
 
